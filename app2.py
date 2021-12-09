@@ -19,7 +19,7 @@ def app():
         # Setting up the Title
           
     st.title("Echo explain")
-    st.header("Powered by Cordoc LLC") 
+    #st.header("Powered by Cordoc LLC") 
 
     st.write(f"""
         ## Made by Cordoc LLC
