@@ -6,7 +6,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Echo Explain",
-    page_icon="🐾",
+    page_icon="�:heart:",
     layout="centered")
 
 # Pages as key-value pairs
