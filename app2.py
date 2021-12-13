@@ -11,6 +11,7 @@ credentials = service_account.Credentials.from_service_account_info(
     )
 service = discovery.build('sheets', 'v4', credentials=credentials)
 
+
 def app():
     
     # Creating an object of prediction service
@@ -22,20 +23,9 @@ def app():
     def process_prompt(input):
         return pred.model_prediction(input=input, api_key=st.secrets.db_key)
 
-    st.title("Echo Explain")
-    st.header("Made by Cordoc LLC") 
-
-    st.write("This app will help you understand your echo report using AI")
-        
+    st.image("./ai.png", width=100)
+    st.title("ECHO EXPLAIN")
     st.write("---")
-
-    st.write(f"""
-       Still in development. Use with caution. Do not use for medical decision making📖
-        """)
-
-    st.write(f"""---""")
-
-    st.image("./ai.png")
 
     input = st.text_area('Input:')
     global report_text
@@ -43,26 +33,30 @@ def app():
     if st.button('Submit'):
         st.write('**Output**')
         st.write(f"""---""")
+        spreadsheet_id = st.secrets.spreadsheet_id  
+
+        range_ = 'A1' 
+             
         with st.spinner(text='In progress'):
             report_text = process_prompt(input)
+            #report_text = input [::-1]
             st.markdown(report_text)
-        if st.button('Save to training dataset'):
-            # The ID of the spreadsheet to update.
-            spreadsheet_id = st.secrets.spreadsheet_id  
-
-            range_ = 'A1' 
             values = [
-            (input, report_text)
-            ]
+                (input, report_text)
+                    ]
             value_range_body = {
-            'majorDimension' : 'ROWS',
-            'values': values
-            }
+                        'majorDimension' : 'ROWS',
+                        'values': values
+                    } 
 
             service.spreadsheets().values().append(
-            spreadsheetId=spreadsheet_id, 
-            range=range_, 
-            valueInputOption='RAW',
-            body=value_range_body).execute()
+                spreadsheetId=spreadsheet_id, 
+                range=range_, 
+                valueInputOption='RAW',
+                body=value_range_body).execute()
+                
+    st.write("---")
 
+    st.write("Cordoc LLC. This app will help you understand your echo report using AI. Still in development. Use with caution. Do not use for medical decision making")
+       
 
