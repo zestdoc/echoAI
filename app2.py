@@ -57,8 +57,8 @@ def app():
         range_ = 'A1' 
              
         with st.spinner(text='In progress'):
-            # report_text = process_prompt(input)
-            report_text = 'default12345'
+            report_text = process_prompt(input)
+            # report_text = 'default12345'
             st.success(report_text)
             values = [
                 (input, report_text, desired_text, jargon_summary)
