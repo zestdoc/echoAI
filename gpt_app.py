@@ -16,7 +16,7 @@ st.set_page_config(
 
 # Pages as key-value pairs
 PAGES = {
-   "Echo Explain": app2
+   "Echo NLP": app2
 }
 
 #st.sidebar.title('Go to:')
