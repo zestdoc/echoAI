@@ -5,7 +5,7 @@ import streamlit as st
 
 
 st.set_page_config(
-    page_title="Echo Explain",
+    page_title="Echo NLP",
     page_icon=":heart:",
     layout="centered",
     menu_items={
