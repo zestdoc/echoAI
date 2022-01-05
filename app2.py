@@ -30,11 +30,11 @@ def app():
     desired_text = 'default_training'
     jargon_summary = 'default_jargon_summary'
     input = st.text_area('Paste echo report conclusion here:')
-    training = st.checkbox('Add this to traning data?')
+    training = st.checkbox('Add this to training data?')
     translate = st.checkbox('Translate result from English to preferred language')
     if training:
                 desired_text = st.text_area('Simplified text:')
-                jargon_summary = st.text_area ('Jargon summary')
+                jargon_summary = st.text_area ('Jargon/Shorthand')
     
 
    
